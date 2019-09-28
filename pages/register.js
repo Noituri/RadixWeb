@@ -1,6 +1,7 @@
-import React from "react"
+import React from 'react'
 import Link from 'next/link'
 import Layout from '../layouts/default'
+import ErrorAlert from '../components/ErrorAlert'
 
 const Register = () => {
    return (
@@ -12,7 +13,7 @@ const Register = () => {
                   Sing Up
                </h3>
                <div className="form">
-                  {/* <ErrorAlert :error-message="errorMessage" />*/}
+                  <ErrorAlert errorMessage="" />
                   <input placeholder="Username" type="text"/>
                   <br/>
                   <input placeholder="Email address" type="email"/>

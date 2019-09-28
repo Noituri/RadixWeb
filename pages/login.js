@@ -1,6 +1,7 @@
-import React from "react"
-import Link from "next/link"
+import React from 'react'
+import Link from 'next/link'
 import Layout from '../layouts/default'
+import ErrorAlert from '../components/ErrorAlert'
 
 const Login = () => {
    return (
@@ -11,7 +12,7 @@ const Login = () => {
                   Sing In
                </h3>
                <div className="form">
-                  {/*<ErrorAlert :error-message="errorMessage" />*/}
+                  <ErrorAlert errorMessage="" />
                   <input placeholder="Email address" type="text"/>
                   <br/>
                   <input className="form.password" placeholder="Password" type="password"/>
