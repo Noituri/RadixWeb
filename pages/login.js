@@ -1,5 +1,6 @@
+import React from "react"
+import Link from "next/link"
 import Layout from '../layouts/default'
-import React from "react";
 
 const Login = () => {
    return (
@@ -18,9 +19,11 @@ const Login = () => {
                   <p className="button" style={{marginTop: '2rem', padding: '1rem 2rem 1rem'}}>
                      Sign In
                   </p>
-                  <p style={{marginTop: '1rem'}}>
-                     Don't have an account? <span className="accent" style={{textDecoration: 'none', cursor: 'pointer'}}>Sign up!</span>
-                  </p>
+                  <Link href="/register">
+                     <p style={{marginTop: '1rem'}}>
+                        Don't have an account? <span className="accent" style={{textDecoration: 'none', cursor: 'pointer'}}>Sign up!</span>
+                     </p>
+                  </Link>
                </div>
             </article>
          </div>

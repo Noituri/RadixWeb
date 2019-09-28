@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import Link from 'next/link'
 
 export default () => {
    return (
@@ -13,6 +14,7 @@ export default () => {
             }
             
             nav .logo {
+                cursor: pointer;
                 display: flex;
                 float: left;
             }
@@ -48,13 +50,17 @@ export default () => {
          </transition>
          */}
             <nav role="navigation">
-               <div className="logo" style={{textDecoration: 'none'}} to="/">
-                  <img src="../static/images/applogo.png"/>
-                  <p className="name">Radix</p>
-               </div>
-               <p className="button longer item">
-                  Sign In
-               </p>
+               <Link href="/">
+                  <div className="logo" style={{textDecoration: 'none'}}>
+                     <img src="../static/images/applogo.png"/>
+                     <p className="name">Radix</p>
+                  </div>
+               </Link>
+               <Link href="/login">
+                  <p className="button longer item">
+                     Sign In
+                  </p>
+               </Link>
 
                <p className="accent item" style={{ marginRight: '1rem', marginTop: '.3rem' }}>
                   Pricing

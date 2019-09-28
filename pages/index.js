@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Layout from '../layouts/default'
 
 const Index = () => (
@@ -12,9 +13,11 @@ const Index = () => (
             <h2 className="title">
                <span className="accent">Host</span> your bots <span className="accent">with ease</span>
             </h2>
-            <p className="button big" style={{marginTop: '3rem', padding: '1rem 2rem 1rem'}}>
-               Try it now!
-            </p>
+            <Link href="/register">
+               <p className="button big" style={{marginTop: '3rem', padding: '1rem 2rem 1rem'}}>
+                  Try it now!
+               </p>
+            </Link>
          </article>
       </div>
    </Layout>
