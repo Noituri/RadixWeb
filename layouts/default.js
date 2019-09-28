@@ -66,6 +66,13 @@ const Default = ({ title, children }) => {
                 margin-top: 5rem;
             }
             
+            .title {
+                user-select: none;
+                font-size: 3rem;
+                color: #000;
+                text-align: center;
+            }
+            
             .accent {
                 color: #EC0B43;
                 font-weight: 600;
@@ -99,6 +106,42 @@ const Default = ({ title, children }) => {
                 cursor: pointer;
                 /* color: #000; */
                 background-color: rgb(255, 2, 44);
+            }
+            
+            .big {
+                width: 15rem !important;
+            }
+            
+            .form {
+                text-align: center;
+                color: #000;
+            }
+            
+            .form input {
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 2rem;
+                background-color: #fff;
+                display: inline-block;
+                margin-top: 1rem;
+                font-family: 'Manrope', sans-serif;
+                font-size: 1.3rem;
+                padding: 1rem 1rem 1rem;
+                max-width: 60%;
+                color: #000;
+            }
+            
+            ::placeholder {
+                color: rgba(0, 0, 0, 0.5);
+            }
+            
+            .form input:focus {
+                outline: none;
+                /*border: 1px #F100E6 solid;*/
+            }
+            
+            .form input:disabled {
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                background-color: rgba(216, 216, 216, 0.623);
             }
             
             @media only screen and (min-width: 750px) {
