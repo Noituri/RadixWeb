@@ -144,6 +144,40 @@ const Default = ({ title, children }) => {
                 background-color: rgba(216, 216, 216, 0.623);
             }
             
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #fff;
+                min-width: 6rem;
+                border-radius: .5rem;
+                box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.2);
+            }
+            
+            .dropdown .space {
+                height: .5rem;
+            }
+            
+            .dropdown-item {
+                color: #000;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            
+            .dropdown-item:hover {
+                cursor: pointer;
+                color: #E3195F;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            
             @media only screen and (min-width: 750px) {
                 .logo .name {
                     margin-top: .4rem;

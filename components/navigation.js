@@ -1,10 +1,14 @@
 import React from 'react'
+import { inject, observer } from 'mobx-react'
 import Link from 'next/link'
 
-export default () => {
-   return (
-      <>
-         <style jsx>{`
+@inject('store')
+@observer
+class Navigation extends React.Component {
+   render() {
+      return (
+         <>
+            <style jsx>{`
             nav {
                 padding: .5rem 1rem 1rem 1rem;
                 margin-bottom: 1rem;
@@ -43,50 +47,58 @@ export default () => {
                 color: rgb(255, 2, 44);
             }
          `}</style>
-         <header>
-            {/*
+            <header>
+               {/*
          <transition name="fade">
             <UserProfile v-if="showProfile" @close-modal="showProfile=false" />
          </transition>
          */}
-            <nav role="navigation">
-               <Link href="/">
-                  <div className="logo" style={{textDecoration: 'none'}}>
-                     <img src="../static/images/applogo.png"/>
-                     <p className="name">Radix</p>
-                  </div>
-               </Link>
-               <Link href="/login">
-                  <p className="button longer item">
-                     Sign In
-                  </p>
-               </Link>
+               <nav role="navigation">
+                  <Link href="/">
+                     <div className="logo" style={{textDecoration: 'none'}}>
+                        <img src="../static/images/applogo.png"/>
+                        <p className="name">Radix</p>
+                     </div>
+                  </Link>
 
-               <p className="accent item" style={{ marginRight: '1rem', marginTop: '.3rem' }}>
-                  Pricing
-               </p>
+                  { this.props.store.user === null ? (
+                     <>
+                        <Link href="/login">
+                           <p className="button longer item">
+                              Sign In
+                           </p>
+                        </Link>
 
-               {/*
-               <div v-else class="item dropdown" style="margin-right: 1rem">
-                  <p class="button longer" to="/user/apps">
-                     Username
-                  </p>
-                  <div class="space"/>
-                  <div class="dropdown-content">
-                     <p class="dropdown-item">
-                        Profile
-                     </p>
-                     <nuxt-link class="dropdown-item" to="/user/apps">
-                        Apps
-                     </nuxt-link>
-                     <p class="dropdown-item">
-                        Logout
-                     </p>
-                  </div>
-               </div>
-               */}
-            </nav>
-         </header>
-      </>
-   )
+                        <p className="accent item" style={{ marginRight: '1rem', marginTop: '.3rem' }}>
+                           Pricing
+                        </p>
+                     </>
+                  ) : (
+                     <div className="item dropdown" style={{marginRight: '1rem'}}>
+                        <p className="button longer">
+                           {this.props.store.user.name}
+                        </p>
+                        <div className="space"/>
+                        <div className="dropdown-content">
+                           <p className="dropdown-item">
+                              Profile
+                           </p>
+                           <p className="dropdown-item">
+                              Apps
+                           </p>
+                           <p className="dropdown-item">
+                              Logout
+                           </p>
+                        </div>
+                     </div>
+                  )
+
+                  }
+               </nav>
+            </header>
+         </>
+      )
+   }
 }
+
+export default Navigation
