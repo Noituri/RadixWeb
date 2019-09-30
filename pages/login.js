@@ -3,7 +3,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import Layout from '../layouts/default'
 import ErrorAlert from '../components/ErrorAlert'
-import { useRouter } from 'next/router'
+import { withRouter } from 'next/router'
 import { LOGIN_ENDPOINT } from '../constants'
 
 class Login extends React.Component {
@@ -29,14 +29,14 @@ class Login extends React.Component {
       }
 
       axios.post(LOGIN_ENDPOINT, {}, config)
-         .then(() => {
-            useRouter().push('/user/apps')
+         .then((_resp) => {
+            this.props.router.push('/user/apps')
          })
          .catch((error) => {
-            const resp = error.response.data
-            if (resp.status === 'error') {
+            const resp = error.response
+            if (resp !== undefined) {
                this.setState({
-                  errorMessage: 'resp.message'
+                  errorMessage: resp.data.message
                })
                return
             }
@@ -83,4 +83,4 @@ class Login extends React.Component {
    }
 }
 
-export default Login
+export default withRouter(Login)

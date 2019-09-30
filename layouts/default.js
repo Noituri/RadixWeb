@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Head from 'next/head'
 import Navigation from '../components/navigation'
 
 const Default = ({ title, children }) => {
@@ -270,7 +271,9 @@ const Default = ({ title, children }) => {
             }
          `}</style>
 
-         <title>Radix - {title}</title>
+         <Head>
+            <title>Radix - {title}</title>
+         </Head>
          <Navigation/>
          <main>{children}</main>
       </>
