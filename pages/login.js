@@ -3,9 +3,9 @@ import Link from 'next/link'
 import axios from 'axios'
 import Layout from '../layouts/default'
 import ErrorAlert from '../components/ErrorAlert'
-import { withRouter } from 'next/router'
 import { useRouter } from 'next/router'
 import { LOGIN_ENDPOINT } from '../constants'
+import { onEnterPress } from '../utils'
 
 const Login = () => {
    const [creds, setCreds] = useState({
@@ -15,9 +15,7 @@ const Login = () => {
    })
    const router = useRouter()
 
-   const signIn = (e) => {
-      e.preventDefault()
-
+   const signIn = () => {
       const config = {
          headers: {
             Authorization: 'Basic ' + btoa(`${creds.email}:${creds.pass}`)
@@ -31,9 +29,10 @@ const Login = () => {
          .catch((error) => {
             const resp = error.response
             if (resp !== undefined) {
+               const message = resp.data.message === undefined ? 'Something went wrong. Try again later.' : resp.data.message
                setCreds({
                   ...creds,
-                  errorMessage: resp.data.message
+                  errorMessage: message
                })
 
                return
@@ -45,6 +44,8 @@ const Login = () => {
             })
          })
    }
+
+   onEnterPress(signIn)
 
    const handleInputChange = (e) => {
       setCreds({
@@ -81,4 +82,4 @@ const Login = () => {
    )
 }
 
-export default withRouter(Login)
+export default Login

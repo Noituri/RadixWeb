@@ -94,6 +94,7 @@ const Default = ({ title, children }) => {
                 font-size: 1rem;
                 text-decoration: none;
                 transition: background-color ease-out 0.2s;
+                user-select: none;
             }
             
             .button.longer {
