@@ -25,7 +25,7 @@ const ErrorAlert = ({ errorMessage }) => {
    )
 }
 
-Default.propTypes = {
+ErrorAlert.propTypes = {
    errorMessage: PropTypes.string
 }
 
