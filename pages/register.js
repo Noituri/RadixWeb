@@ -26,29 +26,31 @@ const Register = ({toastManager}) => {
          }
        }
 
-       axios.post(REGISTER_ENDPOINT, {}, config).then((response) => {
-         router.push('/')
-         toastManager.add("Please verify your email", {
-            appearance: 'success',
-            autoDismiss: true
+       axios.post(REGISTER_ENDPOINT, {}, config)
+         .then((response) => {
+            router.push('/')
+            toastManager.add("Please verify your email", {
+               appearance: 'success',
+               autoDismiss: true
+            })
          })
-       }).catch((error) => {
-         const resp = error.response
-         if (resp !== undefined) {
-            const message = resp.data.message === undefined ? 'Something went wrong. Try again later.' : resp.data.message
+         .catch((error) => {
+            const resp = error.response
+            if (resp !== undefined) {
+               const message = resp.data.message === undefined ? 'Something went wrong. Try again later.' : resp.data.message
+               setCreds({
+                  ...creds,
+                  errorMessage: message
+               })
+
+               return
+            }
+            
             setCreds({
                ...creds,
-               errorMessage: message
+               errorMessage: 'Something went wrong. Try again later.'
             })
-
-            return
-         }
-         
-         setCreds({
-            ...creds,
-            errorMessage: 'Something went wrong. Try again later.'
          })
-       })
    }
 
    onEnterPress(register)
