@@ -3,7 +3,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import Layout from '../layouts/default'
-import ErrorAlert from '../components/ErrorAlert'
+import ErrorAlert from '../components/error-alert'
 import { REGISTER_ENDPOINT } from '../constants'
 import { withToastManager } from 'react-toast-notifications';
 import { onEnterPress } from '../utils'
