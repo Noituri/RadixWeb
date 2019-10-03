@@ -2,13 +2,13 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 
-const AppsList = ({ data }) => {
+const AppsList = ({ data, onNewApp }) => {
    const router = useRouter()
 
    const newAppBtn = []
    for (let i = 0; i < 6 - data.length; i++) {
       newAppBtn.push(
-         <div key={i} className="app">
+         <div key={i} className="app" onClick={ onNewApp }>
             <div className="app-logo">
                <h3>+</h3>
             </div>
@@ -78,7 +78,7 @@ const AppsList = ({ data }) => {
          `}</style>
          <div className="app-selector">
             {data.map((item, index) => (
-               <div key={index} className="app">
+               <div key={index} className="app" onClick={() => router.push('/user/dashboard/' + item.id)}>
                   <div className="app-logo">
                      <h3>{item.name.charAt(0).toUpperCase()}</h3>
                   </div>
@@ -93,7 +93,8 @@ const AppsList = ({ data }) => {
 }
 
 AppsList.propTypes = {
-   data: PropTypes.array
+   data: PropTypes.array,
+   onNewApp: PropTypes.func
 }
 
 export default AppsList
