@@ -179,6 +179,43 @@ const Default = ({ title, children }) => {
             .dropdown:hover .dropdown-content {
                 display: block;
             }
+
+            .modal {
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            
+            .modal-content {
+                border: 2px solid #fff;
+                border-radius: 0.5rem;
+                background-color: #fff;
+                display: inline-block;
+                color: #000;
+                margin-top: 5rem;
+                width: 80%;
+                max-width: 30rem;
+                padding: 0.5rem;
+            }
+
+            select {
+                cursor: pointer;
+                appearance: none;
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 2rem;
+                font-size: 1rem;
+                padding: .5rem 1rem .5rem 1rem;
+                color: #000;
+                background-color: #fff;
+                text-overflow: '';
+            }
             
             @media only screen and (min-width: 750px) {
                 .logo .name {
